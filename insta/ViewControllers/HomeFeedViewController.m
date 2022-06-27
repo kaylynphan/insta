@@ -9,9 +9,12 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "../Models/Post.h"
+#import "../Views/PostCell.h"
 
 @interface HomeFeedViewController ()
 - (IBAction)didTapLogout:(id)sender;
+@property (strong, nonatomic) NSArray *arrayOfPosts;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -19,22 +22,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    // try uploading a Post
-    /*
-    Post *post = [Post new];
-    post.postID = @"00000001";
-    post.userID = @"kaylynphan";
-    post.caption = @"trying to upload a post";
-    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"The test Post has been saved.");
-        }
-        else {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 2;
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            NSLog(@"%@", posts);
+            self.arrayOfPosts = posts;
+        } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-     */
+    
+    // set up table
+    [self.tableView setDataSource:self];
+    [self.tableView setDelegate:self];
+    self.arrayOfPosts = [[NSArray alloc] init];
+    
+    // reload feed data
+    [self.tableView reloadData];
 }
 
 /*
@@ -60,5 +70,21 @@
         }
     }];
 }
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+    PFObject *post = self.arrayOfPosts[indexPath.row];
+    cell.userLabel.text = @"Fill this in later"; //change to post[@"userID"]
+    cell.captionLabel.text = post[@"caption"];
+    PFFileObject *imageFile = post[@"image"];
+    NSData *imageData = [imageFile getDataInBackground];
+    cell.postImage.image = [UIImage imageWithData:imageData];
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayOfPosts.count;
+}
+
 
 @end
