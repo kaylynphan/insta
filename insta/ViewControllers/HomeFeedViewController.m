@@ -27,21 +27,22 @@
     [query orderByDescending:@"createdAt"];
     query.limit = 2;
 
+    // set up table
+    [self.tableView setDataSource:self];
+    [self.tableView setDelegate:self];
+    self.arrayOfPosts = [[NSArray alloc] init];
+    
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             // do something with the array of object returned by the call
-            NSLog(@"%@", posts);
             self.arrayOfPosts = posts;
+            NSLog(@"%@", self.arrayOfPosts);
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
     
-    // set up table
-    [self.tableView setDataSource:self];
-    [self.tableView setDelegate:self];
-    self.arrayOfPosts = [[NSArray alloc] init];
     
     // reload feed data
     [self.tableView reloadData];
@@ -74,8 +75,9 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     PFObject *post = self.arrayOfPosts[indexPath.row];
-    cell.userLabel.text = @"Fill this in later"; //change to post[@"userID"]
+    cell.userLabel.text = post[@"userID"];
     cell.captionLabel.text = post[@"caption"];
+    NSLog(@"Caption: %@", post[@"caption"]);
     PFFileObject *imageFile = post[@"image"];
     NSData *imageData = [imageFile getDataInBackground];
     cell.postImage.image = [UIImage imageWithData:imageData];
