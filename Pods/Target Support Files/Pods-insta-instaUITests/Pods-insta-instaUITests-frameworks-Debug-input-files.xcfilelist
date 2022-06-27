@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-insta-instaUITests/Pods-insta-instaUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/Parse/Parse.framework
