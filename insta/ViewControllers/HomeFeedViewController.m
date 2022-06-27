@@ -53,7 +53,11 @@
     self.view.window.rootViewController = loginViewController;
     // logout user
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Logout Successful");
+        }
     }];
 }
 
