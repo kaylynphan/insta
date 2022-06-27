@@ -18,6 +18,8 @@
 		2EC01E25286A2DE0001F62C0 /* instaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC01E24286A2DE0001F62C0 /* instaUITests.m */; };
 		2EC01E27286A2DE0001F62C0 /* instaUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC01E26286A2DE0001F62C0 /* instaUITestsLaunchTests.m */; };
 		2EC01E35286A441C001F62C0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC01E34286A441C001F62C0 /* LoginViewController.m */; };
+		2EC01E3C286A4ABD001F62C0 /* HomeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC01E3B286A4ABD001F62C0 /* HomeFeedViewController.m */; };
+		2EC01E3F286A4E3D001F62C0 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC01E3E286A4E3D001F62C0 /* Post.m */; };
 		6D927EFA7C1873E28CDB825E /* Pods_instaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53418977C9A56B70F26FDD88 /* Pods_instaTests.framework */; };
 		C09D47982C018FD50B9DD9A0 /* Pods_insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45570C89B2E8096AA391EC35 /* Pods_insta.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,10 @@
 		2EC01E26286A2DE0001F62C0 /* instaUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = instaUITestsLaunchTests.m; sourceTree = "<group>"; };
 		2EC01E33286A441C001F62C0 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2EC01E34286A441C001F62C0 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2EC01E3A286A4ABD001F62C0 /* HomeFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeFeedViewController.h; sourceTree = "<group>"; };
+		2EC01E3B286A4ABD001F62C0 /* HomeFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeFeedViewController.m; sourceTree = "<group>"; };
+		2EC01E3D286A4E3D001F62C0 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		2EC01E3E286A4E3D001F62C0 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		45570C89B2E8096AA391EC35 /* Pods_insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53418977C9A56B70F26FDD88 /* Pods_instaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB210F2E721E8918382D306 /* Pods_insta_instaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insta_instaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,8 +144,6 @@
 				2EC01E39286A4466001F62C0 /* Models */,
 				2EC01E37286A4457001F62C0 /* Views */,
 				2EC01E36286A4426001F62C0 /* ViewControllers */,
-				2EC01E34286A441C001F62C0 /* LoginViewController.m */,
-				2EC01E33286A441C001F62C0 /* LoginViewController.h */,
 				2EC01E07286A2DDF001F62C0 /* Main.storyboard */,
 				2EC01E0A286A2DE0001F62C0 /* Assets.xcassets */,
 				2EC01E0C286A2DE0001F62C0 /* LaunchScreen.storyboard */,
@@ -169,6 +173,10 @@
 		2EC01E36286A4426001F62C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2EC01E3A286A4ABD001F62C0 /* HomeFeedViewController.h */,
+				2EC01E3B286A4ABD001F62C0 /* HomeFeedViewController.m */,
+				2EC01E34286A441C001F62C0 /* LoginViewController.m */,
+				2EC01E33286A441C001F62C0 /* LoginViewController.h */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -183,6 +191,8 @@
 		2EC01E39286A4466001F62C0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2EC01E3D286A4E3D001F62C0 /* Post.h */,
+				2EC01E3E286A4E3D001F62C0 /* Post.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -438,6 +448,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EC01E3C286A4ABD001F62C0 /* HomeFeedViewController.m in Sources */,
+				2EC01E3F286A4E3D001F62C0 /* Post.m in Sources */,
 				2EC01E00286A2DDF001F62C0 /* AppDelegate.m in Sources */,
 				2EC01E11286A2DE0001F62C0 /* main.m in Sources */,
 				2EC01E03286A2DDF001F62C0 /* SceneDelegate.m in Sources */,
