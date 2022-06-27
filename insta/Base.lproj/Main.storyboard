@@ -87,6 +87,7 @@
                                 <action selector="didTapLogout:" destination="vIl-m6-Eky" id="LJb-WQ-GYr"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="Mif-gd-GO9"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>

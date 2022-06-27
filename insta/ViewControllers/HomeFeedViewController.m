@@ -22,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // try uploading a Post
+    /*
     Post *post = [Post new];
     post.postID = @"00000001";
     post.userID = @"kaylynphan";
@@ -34,6 +35,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+     */
 }
 
 /*
@@ -51,7 +53,7 @@
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    appDelegate.window.rootViewController = loginViewController;
+    self.view.window.rootViewController = loginViewController;
     // logout user
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil

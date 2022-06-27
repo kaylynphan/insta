@@ -175,8 +175,8 @@
 			children = (
 				2EC01E3A286A4ABD001F62C0 /* HomeFeedViewController.h */,
 				2EC01E3B286A4ABD001F62C0 /* HomeFeedViewController.m */,
-				2EC01E34286A441C001F62C0 /* LoginViewController.m */,
 				2EC01E33286A441C001F62C0 /* LoginViewController.h */,
+				2EC01E34286A441C001F62C0 /* LoginViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
