@@ -63,12 +63,28 @@
                     <connections>
                         <outlet property="passwordField" destination="tMu-dD-zCR" id="3km-MV-wuh"/>
                         <outlet property="usernameField" destination="RRQ-xp-kZm" id="6IV-XG-7WD"/>
-                        <segue destination="Di5-wW-2Lu" kind="presentation" identifier="loginSegue" id="4OM-ge-Twy"/>
+                        <segue destination="HJR-x5-ZVx" kind="presentation" identifier="loginSegue" id="a7g-Ub-1Dm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="115.94202898550725" y="99.776785714285708"/>
+            <point key="canvasLocation" x="-1049" y="-419"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="PK3-3u-e19">
+            <objects>
+                <viewController id="tVz-91-oEA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e5h-nE-xWr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ZcS-NS-QMv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="gFp-RC-yUn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OLM-1Y-7CN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="-811"/>
         </scene>
         <!--Home Feed View Controller-->
         <scene sceneID="CZN-FH-o4e">
@@ -79,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Aja-Yy-UbD">
-                                <rect key="frame" x="0.0" y="32" width="414" height="830"/>
+                                <rect key="frame" x="0.0" y="32" width="414" height="781"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="482" id="bBn-s9-ecm" customClass="PostCell">
@@ -126,7 +142,7 @@
                                             <outlet property="photoImageView" destination="mgQ-ya-0Q6" id="QpF-iz-mDF"/>
                                             <outlet property="postImage" destination="mgQ-ya-0Q6" id="Jc6-Qb-iw6"/>
                                             <outlet property="userLabel" destination="zZ0-pv-E5S" id="xZ9-6l-Ruo"/>
-                                            <segue destination="2wo-iI-jZU" kind="show" id="kqn-V8-OSH"/>
+                                            <segue destination="2wo-iI-jZU" kind="show" identifier="showDetails" id="kqn-V8-OSH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -152,7 +168,7 @@
                             <barButtonItem id="Mif-gd-GO9"/>
                             <barButtonItem title="Compose" id="TBp-Uk-lsV">
                                 <connections>
-                                    <segue destination="a4b-6s-bh9" kind="presentation" id="axs-Vn-7su"/>
+                                    <segue destination="a4b-6s-bh9" kind="presentation" identifier="composePost" id="axs-Vn-7su"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -303,10 +319,29 @@
             </objects>
             <point key="canvasLocation" x="3815.9420289855075" y="99.776785714285708"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="rcG-6R-xjk">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarViewController" modalPresentationStyle="fullScreen" id="HJR-x5-ZVx" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jHg-ZS-eZ3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Di5-wW-2Lu" kind="relationship" relationship="viewControllers" id="V1P-qf-pHL"/>
+                        <segue destination="tVz-91-oEA" kind="relationship" relationship="viewControllers" id="4aH-m5-Li1"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jBa-99-bN1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-67" y="-419"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="Xu6-Qe-cfc">
             <objects>
                 <navigationController storyboardIdentifier="HomeFeedNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Di5-wW-2Lu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="D54-BV-gEd"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="FbS-Oq-iiP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zcb-5S-VW4">
@@ -320,7 +355,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Jr-oL-py9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="979.71014492753636" y="99.776785714285708"/>
+            <point key="canvasLocation" x="955" y="100"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ktb-gj-xNV">
