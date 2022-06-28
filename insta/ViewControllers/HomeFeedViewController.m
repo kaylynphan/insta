@@ -29,14 +29,22 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
-    //[query includeKey:@"createdAt"];
     query.limit = 20;
+    
+    // set up refresh
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
+
 
     // set up table
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
     self.arrayOfPosts = [[NSArray alloc] init];
-    
+    [self queryPosts:query];
+}
+
+- (void)queryPosts:(PFQuery *)query {
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
@@ -75,6 +83,16 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrayOfPosts.count;
+}
+
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    query.limit = 20;
+    // re-query posts and update table view
+    [self queryPosts:query];
+    [refreshControl endRefreshing];
 }
 
 #pragma mark - Navigation
