@@ -27,7 +27,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
-    query.limit = 2;
+    query.limit = 20;
 
     // set up table
     [self.tableView setDataSource:self];
@@ -45,8 +45,6 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    
-    
 }
 
 /*
@@ -77,14 +75,6 @@
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     Post *post = self.arrayOfPosts[indexPath.row];
     cell.post = post;
-    /*
-    cell.userLabel.text = post[@"userID"];
-    cell.captionLabel.text = post[@"caption"];
-    NSLog(@"Caption: %@", post[@"caption"]);
-    PFFileObject *imageFile = post[@"image"];
-    NSData *imageData = [imageFile getDataInBackground];
-    cell.postImage.image = [UIImage imageWithData:imageData];
-     */
     return cell;
 }
 
