@@ -12,6 +12,7 @@
 #import "../Views/PostCell.h"
 #import "Post.h"
 #import "DetailsViewController.h"
+#import "ComposeViewController.h"
 
 @interface HomeFeedViewController ()
 - (IBAction)didTapLogout:(id)sender;
@@ -49,6 +50,8 @@
     }];
 }
 
+
+
 - (IBAction)didTapLogout:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
@@ -74,18 +77,24 @@
     return self.arrayOfPosts.count;
 }
 
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UITableViewCell *cell = sender;
-    NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
-    // Get the new view controller using [segue destinationViewController].
-    Post *postToPass = self.arrayOfPosts[myIndexPath.row];
-    // Pass the selected object to the new view controller.
-    DetailsViewController *detailVC = [segue destinationViewController];
-    detailVC.post = postToPass;
+    
+    if ([[segue identifier] isEqualToString:@"showDetails"]) {
+        UITableViewCell *cell = sender;
+        NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
+        // Get the new view controller using [segue destinationViewController].
+        Post *postToPass = self.arrayOfPosts[myIndexPath.row];
+        // Pass the selected object to the new view controller.
+        DetailsViewController *detailVC = [segue destinationViewController];
+        detailVC.post = postToPass;
+    } else if ([[segue identifier] isEqualToString:@"composePost"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    }
+    
 }
 
 
