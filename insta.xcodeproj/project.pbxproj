@@ -20,6 +20,8 @@
 		2EC01E35286A441C001F62C0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC01E34286A441C001F62C0 /* LoginViewController.m */; };
 		2EC01E3C286A4ABD001F62C0 /* HomeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC01E3B286A4ABD001F62C0 /* HomeFeedViewController.m */; };
 		2EC01E3F286A4E3D001F62C0 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EC01E3E286A4E3D001F62C0 /* Post.m */; };
+		2EFF351D286A60C0008FD63A /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF351C286A60C0008FD63A /* ComposeViewController.m */; };
+		2EFF3521286A7228008FD63A /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF3520286A7228008FD63A /* PostCell.m */; };
 		6D927EFA7C1873E28CDB825E /* Pods_instaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53418977C9A56B70F26FDD88 /* Pods_instaTests.framework */; };
 		C09D47982C018FD50B9DD9A0 /* Pods_insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45570C89B2E8096AA391EC35 /* Pods_insta.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +65,10 @@
 		2EC01E3B286A4ABD001F62C0 /* HomeFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeFeedViewController.m; sourceTree = "<group>"; };
 		2EC01E3D286A4E3D001F62C0 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		2EC01E3E286A4E3D001F62C0 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		2EFF351B286A60C0008FD63A /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		2EFF351C286A60C0008FD63A /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
+		2EFF351F286A7228008FD63A /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		2EFF3520286A7228008FD63A /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		45570C89B2E8096AA391EC35 /* Pods_insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53418977C9A56B70F26FDD88 /* Pods_instaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB210F2E721E8918382D306 /* Pods_insta_instaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insta_instaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,8 +147,8 @@
 				2EC01DFF286A2DDF001F62C0 /* AppDelegate.m */,
 				2EC01E01286A2DDF001F62C0 /* SceneDelegate.h */,
 				2EC01E02286A2DDF001F62C0 /* SceneDelegate.m */,
+				2EFF351E286A7212008FD63A /* Views */,
 				2EC01E39286A4466001F62C0 /* Models */,
-				2EC01E37286A4457001F62C0 /* Views */,
 				2EC01E36286A4426001F62C0 /* ViewControllers */,
 				2EC01E07286A2DDF001F62C0 /* Main.storyboard */,
 				2EC01E0A286A2DE0001F62C0 /* Assets.xcassets */,
@@ -177,15 +183,10 @@
 				2EC01E3B286A4ABD001F62C0 /* HomeFeedViewController.m */,
 				2EC01E33286A441C001F62C0 /* LoginViewController.h */,
 				2EC01E34286A441C001F62C0 /* LoginViewController.m */,
+				2EFF351B286A60C0008FD63A /* ComposeViewController.h */,
+				2EFF351C286A60C0008FD63A /* ComposeViewController.m */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		2EC01E37286A4457001F62C0 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		2EC01E39286A4466001F62C0 /* Models */ = {
@@ -195,6 +196,15 @@
 				2EC01E3E286A4E3D001F62C0 /* Post.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2EFF351E286A7212008FD63A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2EFF351F286A7228008FD63A /* PostCell.h */,
+				2EFF3520286A7228008FD63A /* PostCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BBF75412084BA04E97AF7024 /* Pods */ = {
@@ -451,9 +461,11 @@
 				2EC01E3C286A4ABD001F62C0 /* HomeFeedViewController.m in Sources */,
 				2EC01E3F286A4E3D001F62C0 /* Post.m in Sources */,
 				2EC01E00286A2DDF001F62C0 /* AppDelegate.m in Sources */,
+				2EFF3521286A7228008FD63A /* PostCell.m in Sources */,
 				2EC01E11286A2DE0001F62C0 /* main.m in Sources */,
 				2EC01E03286A2DDF001F62C0 /* SceneDelegate.m in Sources */,
 				2EC01E35286A441C001F62C0 /* LoginViewController.m in Sources */,
+				2EFF351D286A60C0008FD63A /* ComposeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

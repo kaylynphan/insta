@@ -6,6 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parse/Parse.h"
+#import "Parse/PFImageView.h"
+#import "Post.h"
+@import Parse;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -13,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
+@property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
+@property (strong, nonatomic) Post *post;
+- (void)setPost:(Post *)post;
 
 @end
 

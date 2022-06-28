@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "../Models/Post.h"
 #import "../Views/PostCell.h"
+#import "Post.h"
 
 @interface HomeFeedViewController ()
 - (IBAction)didTapLogout:(id)sender;
@@ -25,6 +26,7 @@
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
     query.limit = 2;
 
     // set up table
@@ -38,14 +40,13 @@
             // do something with the array of object returned by the call
             self.arrayOfPosts = posts;
             NSLog(@"%@", self.arrayOfPosts);
+            [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
     
     
-    // reload feed data
-    [self.tableView reloadData];
 }
 
 /*
@@ -74,13 +75,16 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-    PFObject *post = self.arrayOfPosts[indexPath.row];
+    Post *post = self.arrayOfPosts[indexPath.row];
+    cell.post = post;
+    /*
     cell.userLabel.text = post[@"userID"];
     cell.captionLabel.text = post[@"caption"];
     NSLog(@"Caption: %@", post[@"caption"]);
     PFFileObject *imageFile = post[@"image"];
     NSData *imageData = [imageFile getDataInBackground];
     cell.postImage.image = [UIImage imageWithData:imageData];
+     */
     return cell;
 }
 
