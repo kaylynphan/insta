@@ -73,18 +73,45 @@
         <!--Item-->
         <scene sceneID="PK3-3u-e19">
             <objects>
-                <viewController id="tVz-91-oEA" sceneMemberID="viewController">
+                <viewController id="tVz-91-oEA" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e5h-nE-xWr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvx-8l-Tzl">
+                                <rect key="frame" x="186" y="364" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ood-qO-WhD" customClass="PFImageView">
+                                <rect key="frame" x="112" y="152" width="190" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="FDZ-Py-LWG" appends="YES" id="cS1-MT-i9y"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ZcS-NS-QMv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="gFp-RC-yUn"/>
+                    <connections>
+                        <outlet property="imageTapped" destination="FDZ-Py-LWG" id="VrK-Kd-D40"/>
+                        <outlet property="profileImageView" destination="Ood-qO-WhD" id="MjS-3a-xVN"/>
+                        <outlet property="userLabel" destination="Uvx-8l-Tzl" id="lWX-pq-qnQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLM-1Y-7CN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="FDZ-Py-LWG">
+                    <connections>
+                        <action selector="imageTapped:" destination="tVz-91-oEA" id="kxi-XS-7d5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="954" y="-811"/>
+            <point key="canvasLocation" x="953.62318840579712" y="-811.60714285714278"/>
         </scene>
         <!--Home Feed View Controller-->
         <scene sceneID="CZN-FH-o4e">

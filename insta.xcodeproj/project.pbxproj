@@ -23,6 +23,7 @@
 		2EFF351D286A60C0008FD63A /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF351C286A60C0008FD63A /* ComposeViewController.m */; };
 		2EFF3521286A7228008FD63A /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF3520286A7228008FD63A /* PostCell.m */; };
 		2EFF352D286B964D008FD63A /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF352C286B964D008FD63A /* DetailsViewController.m */; };
+		2EFF3530286BC713008FD63A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF352F286BC713008FD63A /* ProfileViewController.m */; };
 		6D927EFA7C1873E28CDB825E /* Pods_instaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53418977C9A56B70F26FDD88 /* Pods_instaTests.framework */; };
 		C09D47982C018FD50B9DD9A0 /* Pods_insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45570C89B2E8096AA391EC35 /* Pods_insta.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,8 @@
 		2EFF3520286A7228008FD63A /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		2EFF352B286B964D008FD63A /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		2EFF352C286B964D008FD63A /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		2EFF352E286BC713008FD63A /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		2EFF352F286BC713008FD63A /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		45570C89B2E8096AA391EC35 /* Pods_insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53418977C9A56B70F26FDD88 /* Pods_instaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB210F2E721E8918382D306 /* Pods_insta_instaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insta_instaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +189,8 @@
 				2EC01E3B286A4ABD001F62C0 /* HomeFeedViewController.m */,
 				2EC01E33286A441C001F62C0 /* LoginViewController.h */,
 				2EC01E34286A441C001F62C0 /* LoginViewController.m */,
+				2EFF352E286BC713008FD63A /* ProfileViewController.h */,
+				2EFF352F286BC713008FD63A /* ProfileViewController.m */,
 				2EFF352B286B964D008FD63A /* DetailsViewController.h */,
 				2EFF352C286B964D008FD63A /* DetailsViewController.m */,
 				2EFF351B286A60C0008FD63A /* ComposeViewController.h */,
@@ -467,6 +472,7 @@
 				2EC01E3F286A4E3D001F62C0 /* Post.m in Sources */,
 				2EC01E00286A2DDF001F62C0 /* AppDelegate.m in Sources */,
 				2EFF3521286A7228008FD63A /* PostCell.m in Sources */,
+				2EFF3530286BC713008FD63A /* ProfileViewController.m in Sources */,
 				2EC01E11286A2DE0001F62C0 /* main.m in Sources */,
 				2EC01E03286A2DDF001F62C0 /* SceneDelegate.m in Sources */,
 				2EFF352D286B964D008FD63A /* DetailsViewController.m in Sources */,
