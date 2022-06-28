@@ -28,6 +28,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
+    //[query includeKey:@"createdAt"];
     query.limit = 20;
 
     // set up table

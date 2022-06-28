@@ -34,14 +34,16 @@
     [self.photoImageView loadInBackground];
     self.userLabel.text = post.author.username;
     self.captionLabel.text = post[@"caption"];
-    self.timestampLabel.text = post[@"createdAt"];
     
-    NSDate *date = post[@"createdAt"];
+    //NSLog(@"Created at: %@", post[@"createdAt"]);
+    
+    NSDate *date = post.createdAt;
     NSString *dateSince = date.shortTimeAgoSinceNow;
             
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM/dd/yyyy";
     NSLog(@"dateSince: %@", dateSince);
+    
     if (([dateSince containsString:@"d"] ||
          [dateSince containsString:@"w"] ||
          [dateSince containsString:@"M"] ||
@@ -50,11 +52,8 @@
         formatter.timeStyle = NSDateFormatterNoStyle;
         self.timestampLabel.text = [formatter stringFromDate:date];
     } else {
-        self.timestampLabel.text = dateSince;
+        self.timestampLabel.text = [NSString stringWithFormat:@"%@ ago", dateSince];
     }
-    
-    
-    
     
     self.likesLabel.text = [NSString stringWithFormat:@"%@ likes", post[@"likeCount"]];
     self.commentsLabel.text = [NSString stringWithFormat:@"%@ comments", post[@"commentCount"]];
