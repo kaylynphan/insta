@@ -11,6 +11,7 @@
 #import "../Models/Post.h"
 #import "../Views/PostCell.h"
 #import "Post.h"
+#import "DetailsViewController.h"
 
 @interface HomeFeedViewController ()
 - (IBAction)didTapLogout:(id)sender;
@@ -47,16 +48,6 @@
     }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)didTapLogout:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
@@ -80,6 +71,20 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrayOfPosts.count;
+}
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UITableViewCell *cell = sender;
+    NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
+    // Get the new view controller using [segue destinationViewController].
+    Post *postToPass = self.arrayOfPosts[myIndexPath.row];
+    // Pass the selected object to the new view controller.
+    DetailsViewController *detailVC = [segue destinationViewController];
+    detailVC.post = postToPass;
 }
 
 
