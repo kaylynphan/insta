@@ -200,7 +200,7 @@
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem id="Mif-gd-GO9"/>
-                            <barButtonItem title="Compose" id="TBp-Uk-lsV">
+                            <barButtonItem title="Compose" image="insta_camera_btn" id="TBp-Uk-lsV">
                                 <connections>
                                     <segue destination="a4b-6s-bh9" kind="presentation" identifier="composePost" id="axs-Vn-7su"/>
                                 </connections>
@@ -413,6 +413,7 @@
     <resources>
         <image name="feed_tab" width="25" height="25"/>
         <image name="image_placeholder" width="375" height="375"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <image name="profile_tab" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
