@@ -26,13 +26,15 @@
 
 @implementation HomeFeedViewController
 
+const int SIZE_OF_QUERY = 5;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
-    query.limit = 5;
+    query.limit = SIZE_OF_QUERY;
     
     // set up refresh
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -66,7 +68,7 @@
             // append the posts to the array of posts
             self.arrayOfPosts = [self.arrayOfPosts arrayByAddingObjectsFromArray:posts];
             //self.arrayOfPosts = posts; // this is being replaced
-            NSLog(@"%@", self.arrayOfPosts);
+            //NSLog(@"%@", self.arrayOfPosts);
             
             // do these actions just in case we are performing infinite scroll
             // Update flag
@@ -128,8 +130,9 @@
             PFQuery *query = [PFQuery queryWithClassName:@"Post"];
             [query orderByDescending:@"createdAt"];
             [query includeKey:@"author"];
-            query.limit = 5;
+            query.limit = SIZE_OF_QUERY;
             query.skip = self.arrayOfPosts.count;
+            NSLog(@"Loading more posts. Skip is %d", query.skip);
             [self queryPosts:query];
         }
     }
@@ -139,7 +142,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
-    query.limit = 5;
+    query.limit = SIZE_OF_QUERY;
     // re-query posts and update table view
     [self queryPosts:query];
     [refreshControl endRefreshing];
