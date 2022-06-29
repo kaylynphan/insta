@@ -62,21 +62,14 @@
 }
 
 - (void)updateProfileImage {
-    PFQuery *query = [PFQuery queryWithClassName:@"User"];
-    [query getObjectInBackgroundWithId:self.user.objectId
-                                 block:^(PFObject *user, NSError *error) {
-        if (error != nil) {
-            
-            user[@"image"] = [ProfileViewController getPFFileFromImage:self.profileImageView.image];
-            [user saveInBackground];
-        } else {
-            NSLog(@"Error");
-        }
+    PFUser *user = [PFUser currentUser];
+    user[@"profileImage"] = [ProfileViewController getPFFileFromImage:self.profileImageView.image];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        
     }];
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
- 
     // check if image is not nil
     if (!image) {
         return nil;
