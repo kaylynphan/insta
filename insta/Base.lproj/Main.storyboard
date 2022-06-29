@@ -105,7 +105,7 @@
                             <constraint firstItem="Ood-qO-WhD" firstAttribute="leading" secondItem="ZcS-NS-QMv" secondAttribute="leading" constant="112" id="bve-hw-aKj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="gFp-RC-yUn"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab" id="gFp-RC-yUn"/>
                     <connections>
                         <outlet property="profileImageView" destination="Ood-qO-WhD" id="MjS-3a-xVN"/>
                         <outlet property="userLabel" destination="Uvx-8l-Tzl" id="lWX-pq-qnQ"/>
@@ -375,7 +375,7 @@
         <scene sceneID="Xu6-Qe-cfc">
             <objects>
                 <navigationController storyboardIdentifier="HomeFeedNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Di5-wW-2Lu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="D54-BV-gEd"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="feed_tab" id="D54-BV-gEd"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="FbS-Oq-iiP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zcb-5S-VW4">
@@ -411,7 +411,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="feed_tab" width="25" height="25"/>
         <image name="image_placeholder" width="375" height="375"/>
+        <image name="profile_tab" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -66,7 +66,7 @@
     [query getObjectInBackgroundWithId:self.user.objectId
                                  block:^(PFObject *user, NSError *error) {
         if (error != nil) {
-            
+            NSLog(@"Updating Profile Image");
             user[@"image"] = [ProfileViewController getPFFileFromImage:self.profileImageView.image];
             [user saveInBackground];
         } else {
