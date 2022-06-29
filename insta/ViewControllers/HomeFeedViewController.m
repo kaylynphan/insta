@@ -13,15 +13,20 @@
 #import "Post.h"
 #import "DetailsViewController.h"
 #import "ComposeViewController.h"
+#import "InfiniteScrollActivityView.h"
 
 @interface HomeFeedViewController ()
 - (IBAction)didTapLogout:(id)sender;
-@property (strong, nonatomic) NSArray *arrayOfPosts;
+@property (strong, nonatomic) NSMutableArray *arrayOfPosts;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (weak, nonatomic) InfiniteScrollActivityView* loadingMoreView;
 
 @end
 
 @implementation HomeFeedViewController
+
+const int SIZE_OF_QUERY = 5;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +34,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
-    query.limit = 20;
+    query.limit = SIZE_OF_QUERY;
     
     // set up refresh
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -42,15 +47,36 @@
     [self.tableView setDelegate:self];
     self.arrayOfPosts = [[NSArray alloc] init];
     [self queryPosts:query];
+    
+    // set up infinite scroll
+    self.isMoreDataLoading = false;
+    // Set up Infinite Scroll loading indicator
+    CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+    self.loadingMoreView = [[InfiniteScrollActivityView alloc] initWithFrame:frame];
+    self.loadingMoreView.hidden = true;
+    [self.tableView addSubview:self.loadingMoreView];
+    
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    self.tableView.contentInset = insets;
 }
 
 - (void)queryPosts:(PFQuery *)query {
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
-            // do something with the array of object returned by the call
-            self.arrayOfPosts = posts;
-            NSLog(@"%@", self.arrayOfPosts);
+            // append the posts to the array of posts
+            self.arrayOfPosts = [self.arrayOfPosts arrayByAddingObjectsFromArray:posts];
+            //self.arrayOfPosts = posts; // this is being replaced
+            //NSLog(@"%@", self.arrayOfPosts);
+            
+            // do these actions just in case we are performing infinite scroll
+            // Update flag
+            self.isMoreDataLoading = false;
+            // Stop the loading indicator
+            [self.loadingMoreView stopAnimating];
+            
+            // reload data
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -85,11 +111,38 @@
     return self.arrayOfPosts.count;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            
+            // Update position of loadingMoreView, and start loading indicator
+            CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+            self.loadingMoreView.frame = frame;
+            [self.loadingMoreView startAnimating];
+            
+            // ... Code to load more results ...
+            PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+            [query orderByDescending:@"createdAt"];
+            [query includeKey:@"author"];
+            query.limit = SIZE_OF_QUERY;
+            query.skip = self.arrayOfPosts.count;
+            NSLog(@"Loading more posts. Skip is %d", query.skip);
+            [self queryPosts:query];
+        }
+    }
+}
+
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
-    query.limit = 20;
+    query.limit = SIZE_OF_QUERY;
     // re-query posts and update table view
     [self queryPosts:query];
     [refreshControl endRefreshing];
