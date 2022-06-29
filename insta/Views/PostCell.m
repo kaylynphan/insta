@@ -26,5 +26,7 @@
     [self.photoImageView loadInBackground];
     self.userLabel.text = post.author.username;
     self.captionLabel.text = post[@"caption"];
+    self.profileImageView.file = post.author[@"profileImage"];
+    [self.profileImageView loadInBackground];
 }
 @end

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
 @property (strong, nonatomic) Post *post;
+@property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 
 - (void)setPost:(Post *)post;
 
