@@ -24,6 +24,8 @@
     self.userLabel.text = self.user.username;
     self.profileImageView.file = self.user[@"profileImage"];
     [self.profileImageView loadInBackground];
+    
+    NSLog(@"%@", self.user[@"profileImage"]);
 }
 
 // tap gesture recognizer
@@ -53,24 +55,40 @@
     // Do something with the images (based on your use case)
     [self.profileImageView setImage:editedImage];
     // write to the database
-    [self updateProfile];
+    [self updateProfileImage];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)updateProfile {
+- (void)updateProfileImage {
     PFQuery *query = [PFQuery queryWithClassName:@"User"];
     [query getObjectInBackgroundWithId:self.user.objectId
                                  block:^(PFObject *user, NSError *error) {
         if (error != nil) {
-            //user[@"image"] = upload photo
+            
+            user[@"image"] = [ProfileViewController getPFFileFromImage:self.profileImageView.image];
+            [user saveInBackground];
         } else {
             NSLog(@"Error");
         }
     }];
 }
 
++ (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
+ 
+    // check if image is not nil
+    if (!image) {
+        return nil;
+    }
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    // get image data and check if that is not nil
+    if (!imageData) {
+        return nil;
+    }
+    return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+}
 
 /*
 #pragma mark - Navigation

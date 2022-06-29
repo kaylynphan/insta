@@ -70,7 +70,7 @@
             </objects>
             <point key="canvasLocation" x="-1049" y="-419"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="PK3-3u-e19">
             <objects>
                 <viewController id="tVz-91-oEA" customClass="ProfileViewController" sceneMemberID="viewController">
@@ -78,17 +78,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvx-8l-Tzl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvx-8l-Tzl">
                                 <rect key="frame" x="186" y="364" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ood-qO-WhD" customClass="PFImageView">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ood-qO-WhD" customClass="PFImageView">
                                 <rect key="frame" x="112" y="152" width="190" height="188"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="190" id="Yq7-qB-aDO"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="FDZ-Py-LWG" appends="YES" id="cS1-MT-i9y"/>
                                 </connections>
@@ -96,10 +97,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZcS-NS-QMv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZcS-NS-QMv" firstAttribute="bottom" secondItem="Uvx-8l-Tzl" secondAttribute="bottom" constant="428" id="5HU-LL-R1f"/>
+                            <constraint firstItem="Uvx-8l-Tzl" firstAttribute="centerX" secondItem="ZcS-NS-QMv" secondAttribute="centerX" id="KBK-VF-Llf"/>
+                            <constraint firstItem="Ood-qO-WhD" firstAttribute="top" secondItem="ZcS-NS-QMv" secondAttribute="top" constant="108" id="VgW-Ow-9ec"/>
+                            <constraint firstItem="Uvx-8l-Tzl" firstAttribute="top" secondItem="Ood-qO-WhD" secondAttribute="bottom" constant="24" id="VyA-Nh-qM8"/>
+                            <constraint firstItem="Ood-qO-WhD" firstAttribute="leading" secondItem="ZcS-NS-QMv" secondAttribute="leading" constant="112" id="bve-hw-aKj"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="gFp-RC-yUn"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="gFp-RC-yUn"/>
                     <connections>
-                        <outlet property="imageTapped" destination="FDZ-Py-LWG" id="VrK-Kd-D40"/>
                         <outlet property="profileImageView" destination="Ood-qO-WhD" id="MjS-3a-xVN"/>
                         <outlet property="userLabel" destination="Uvx-8l-Tzl" id="lWX-pq-qnQ"/>
                     </connections>
@@ -364,11 +371,11 @@
             </objects>
             <point key="canvasLocation" x="-67" y="-419"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="Xu6-Qe-cfc">
             <objects>
                 <navigationController storyboardIdentifier="HomeFeedNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Di5-wW-2Lu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="D54-BV-gEd"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="D54-BV-gEd"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="FbS-Oq-iiP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zcb-5S-VW4">
