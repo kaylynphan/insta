@@ -74,6 +74,7 @@
     UIImage *myImage = self.photoImage.image;
     NSString *myCaption = self.captionField.text;
     
+    
     [Post postUserImage:myImage withCaption:myCaption withCompletion:^(BOOL succeeded, NSError * _Nullable error){
         if (error != nil) {
             NSLog(@"Error posting image: %@", error.localizedDescription);
