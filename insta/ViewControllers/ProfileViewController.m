@@ -24,6 +24,9 @@
     self.userLabel.text = self.user.username;
     self.profileImageView.file = self.user[@"profileImage"];
     [self.profileImageView loadInBackground];
+    // crop into circle frame
+    self.profileImageView.layer.cornerRadius = CGRectGetHeight(self.profileImageView.frame) / 2;
+        self.profileImageView.clipsToBounds = YES;
     
     NSLog(@"%@", self.user[@"profileImage"]);
 }

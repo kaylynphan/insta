@@ -28,5 +28,9 @@
     self.captionLabel.text = post[@"caption"];
     self.profileImageView.file = post.author[@"profileImage"];
     [self.profileImageView loadInBackground];
+    
+    // crop into circle frame
+    self.profileImageView.layer.cornerRadius = CGRectGetHeight(self.profileImageView.frame) / 2;
+        self.profileImageView.clipsToBounds = YES;
 }
 @end
