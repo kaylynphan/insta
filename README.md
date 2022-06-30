@@ -46,11 +46,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src="https://i.imgur.com/55tK1dp.gif" width=300px>
-<img src="https://i.imgur.com/BlCNCXu.gif" width=300px>
-<img src="https://i.imgur.com/felXd7j.gif" width=300px>
-<img src="https://i.imgur.com/0KM15WN.gif" width=300px>
-<img src="https://i.imgur.com/BHGgOPx.gif" width=300px>
+<img src="https://i.imgur.com/55tK1dp.gif" width=30px>
+<img src="https://i.imgur.com/BlCNCXu.gif" width=30px>
+<img src="https://i.imgur.com/felXd7j.gif" width=30px>
+<img src="https://i.imgur.com/0KM15WN.gif" width=30px>
+<img src="https://i.imgur.com/BHGgOPx.gif" width=30px>
 
 ## Credits
 
