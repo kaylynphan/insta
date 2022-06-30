@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (weak, nonatomic) InfiniteScrollActivityView* loadingMoreView;
+@property (strong, nonatomic) NSMutableArray *likesByCurrentUser; // an array of post ids where each post was liked by the current user
 
 @end
 
@@ -40,7 +41,9 @@ const int SIZE_OF_QUERY = 5;
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
-
+    
+    // set up likesByCurrentUser
+    [self queryLikes];
 
     // set up table
     [self.tableView setDataSource:self];
@@ -59,6 +62,20 @@ const int SIZE_OF_QUERY = 5;
     UIEdgeInsets insets = self.tableView.contentInset;
     insets.bottom += InfiniteScrollActivityView.defaultHeight;
     self.tableView.contentInset = insets;
+}
+
+- (void)queryLikes {
+    PFQuery *query = [PFQuery queryWithClassName:@"Like"];
+    [query includeKey:@"objectId"];
+    [query whereKey:@"likedByUser" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable likes, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            self.likesByCurrentUser = likes;
+            NSLog(@"%@", [NSString stringWithFormat:@"Likes by user %@: %@", [PFUser currentUser].username, self.likesByCurrentUser]);
+        }
+    }];
 }
 
 - (void)queryPosts:(PFQuery *)query {
