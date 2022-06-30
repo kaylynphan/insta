@@ -46,20 +46,22 @@
 - (IBAction)didTapLikeButton:(id)sender {
     PFUser *user = [PFUser currentUser];
     PFObject *post = _post;
-    // if the post was not liked already...
+    /*
+     // if the post was not liked already...
+     
+     
+     */
     Like *newLike = [Like new];
     newLike.likedByUser = user;
     newLike.postLiked = post;
-    
-    
-    
-    Post *newPost = [Post new];
-    newPost.image = [self getPFFileFromImage:image];
-    newPost.author = [PFUser currentUser];
-    newPost.caption = caption;
-    newPost.likeCount = @(0);
-    newPost.commentCount = @(0);
-    [newPost saveInBackgroundWithBlock: completion];
+    [newLike saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Post Liked!");
+            [self.likeButton setImage:[UIImage imageNamed:@"heart-red"] forState:UIControlStateNormal];
+        }
+    }];
     
 }
 @end

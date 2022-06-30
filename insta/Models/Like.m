@@ -9,4 +9,8 @@
 
 @implementation Like
 
++ (nonnull NSString *)parseClassName {
+    return @"Like";
+}
+
 @end
