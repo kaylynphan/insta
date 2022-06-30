@@ -23,7 +23,7 @@
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (weak, nonatomic) InfiniteScrollActivityView* loadingMoreView;
 @property (strong, nonatomic) NSMutableArray *likesByCurrentUser; // an array of post ids where each post was liked by the current user
-
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation HomeFeedViewController
@@ -39,9 +39,9 @@ const int SIZE_OF_QUERY = 5;
     query.limit = SIZE_OF_QUERY;
     
     // set up refresh
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:refreshControl atIndex:0];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     
     // set up likesByCurrentUser
     [self queryLikes];
@@ -84,6 +84,30 @@ const int SIZE_OF_QUERY = 5;
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             // append the posts to the array of posts
+            self.arrayOfPosts = posts;
+            //NSLog(@"%@", self.arrayOfPosts);
+            
+            // do these actions just in case we are performing infinite scroll
+            // Update flag
+            self.isMoreDataLoading = false;
+            // Stop the loading indicator
+            [self.loadingMoreView stopAnimating];
+            
+            // reload data
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
+}
+
+
+- (void)queryPostsForInfiniteScroll:(PFQuery *)query {
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // append the posts to the array of posts
             self.arrayOfPosts = [self.arrayOfPosts arrayByAddingObjectsFromArray:posts];
             //self.arrayOfPosts = posts; // this is being replaced
             //NSLog(@"%@", self.arrayOfPosts);
@@ -99,6 +123,7 @@ const int SIZE_OF_QUERY = 5;
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -162,7 +187,7 @@ const int SIZE_OF_QUERY = 5;
             query.limit = SIZE_OF_QUERY;
             query.skip = self.arrayOfPosts.count;
             NSLog(@"Loading more posts. Skip is %d", query.skip);
-            [self queryPosts:query];
+            [self queryPostsForInfiniteScroll:query];
         }
     }
 }
@@ -174,7 +199,7 @@ const int SIZE_OF_QUERY = 5;
     query.limit = SIZE_OF_QUERY;
     // re-query posts and update table view
     [self queryPosts:query];
-    [refreshControl endRefreshing];
+    
 }
 
 #pragma mark - Navigation
