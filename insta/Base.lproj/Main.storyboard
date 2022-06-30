@@ -163,6 +163,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwD-rm-eFv">
                                                     <rect key="frame" x="20" y="495" width="36" height="36"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="36" id="7iG-Qv-kNO"/>
                                                         <constraint firstAttribute="height" constant="36" id="Dg9-WA-eu0"/>
@@ -171,6 +172,10 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="heart" title=" ">
                                                         <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="didTapLikeButton:" destination="bBn-s9-ecm" eventType="touchUpInside" id="ItP-Ax-Zk7"/>
+                                                        <outletCollection property="gestureRecognizers" destination="PAk-sE-Efs" appends="YES" id="5Jp-g4-SMO"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qp3-Po-kLP" customClass="PFImageView">
                                                     <rect key="frame" x="7" y="0.0" width="63" height="56"/>
@@ -199,6 +204,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="DhF-nF-PHP" id="CpD-85-C3p"/>
+                                            <outlet property="likeButton" destination="HwD-rm-eFv" id="ULq-kC-AWH"/>
                                             <outlet property="photoImageView" destination="mgQ-ya-0Q6" id="QpF-iz-mDF"/>
                                             <outlet property="postImage" destination="mgQ-ya-0Q6" id="Jc6-Qb-iw6"/>
                                             <outlet property="profileImageView" destination="qp3-Po-kLP" id="PBA-jg-gl3"/>
@@ -240,6 +246,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVF-u5-ff0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="9jr-jm-1ba" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="PAk-sE-Efs">
+                    <connections>
+                        <action selector="didTapLikeButton:" destination="9jr-jm-1ba" id="I3A-rA-Yps"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1889.8550724637682" y="99.776785714285708"/>
         </scene>

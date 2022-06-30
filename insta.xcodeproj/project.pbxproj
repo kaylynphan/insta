@@ -25,6 +25,7 @@
 		2EFF352D286B964D008FD63A /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF352C286B964D008FD63A /* DetailsViewController.m */; };
 		2EFF3530286BC713008FD63A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF352F286BC713008FD63A /* ProfileViewController.m */; };
 		2EFF3535286D0388008FD63A /* InfiniteScrollActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF3534286D0388008FD63A /* InfiniteScrollActivityView.m */; };
+		2EFF3538286D1E21008FD63A /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFF3537286D1E21008FD63A /* Like.m */; };
 		6D927EFA7C1873E28CDB825E /* Pods_instaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53418977C9A56B70F26FDD88 /* Pods_instaTests.framework */; };
 		C09D47982C018FD50B9DD9A0 /* Pods_insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45570C89B2E8096AA391EC35 /* Pods_insta.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,8 @@
 		2EFF352F286BC713008FD63A /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		2EFF3533286D0388008FD63A /* InfiniteScrollActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InfiniteScrollActivityView.h; path = insta/ViewControllers/InfiniteScrollActivityView.h; sourceTree = SOURCE_ROOT; };
 		2EFF3534286D0388008FD63A /* InfiniteScrollActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = InfiniteScrollActivityView.m; path = insta/ViewControllers/InfiniteScrollActivityView.m; sourceTree = SOURCE_ROOT; };
+		2EFF3536286D1E21008FD63A /* Like.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Like.h; sourceTree = "<group>"; };
+		2EFF3537286D1E21008FD63A /* Like.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Like.m; sourceTree = "<group>"; };
 		45570C89B2E8096AA391EC35 /* Pods_insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53418977C9A56B70F26FDD88 /* Pods_instaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB210F2E721E8918382D306 /* Pods_insta_instaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insta_instaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +210,8 @@
 			children = (
 				2EC01E3D286A4E3D001F62C0 /* Post.h */,
 				2EC01E3E286A4E3D001F62C0 /* Post.m */,
+				2EFF3536286D1E21008FD63A /* Like.h */,
+				2EFF3537286D1E21008FD63A /* Like.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 				2EFF352D286B964D008FD63A /* DetailsViewController.m in Sources */,
 				2EFF3535286D0388008FD63A /* InfiniteScrollActivityView.m in Sources */,
 				2EC01E35286A441C001F62C0 /* LoginViewController.m in Sources */,
+				2EFF3538286D1E21008FD63A /* Like.m in Sources */,
 				2EFF351D286A60C0008FD63A /* ComposeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

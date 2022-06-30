@@ -68,7 +68,7 @@
     PFUser *user = [PFUser currentUser];
     user[@"profileImage"] = [ProfileViewController getPFFileFromImage:self.profileImageView.image];
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
+        //
     }];
 }
 
