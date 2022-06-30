@@ -1,8 +1,8 @@
-# Project 3 - *Name of App Here*
+# Project 3 - *Instagram*
 
-**Name of your app** is a photo sharing app using Parse as its backend.
+**Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **40** hours spent in total
 
 ## User Stories
 
@@ -39,16 +39,18 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. How to find free svgs!
+2. How to add post multiple photos at once (up to 10 like the real Instagram).
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [Kap](https://getkap.co/).
+<img src="https://i.imgur.com/55tK1dp.mp4" width=300px>
+<img src="https://i.imgur.com/BlCNCXu.mp4" width=300px>
+<img src="https://i.imgur.com/felXd7j.mp4" width=300px>
+<img src="https://i.imgur.com/0KM15WN.mp4" width=300px>
+<img src="https://i.imgur.com/BHGgOPx.mp4" width=300px>
 
 ## Credits
 
