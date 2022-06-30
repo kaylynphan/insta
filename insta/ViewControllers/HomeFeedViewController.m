@@ -14,6 +14,7 @@
 #import "DetailsViewController.h"
 #import "ComposeViewController.h"
 #import "InfiniteScrollActivityView.h"
+#import "Like.h"
 
 @interface HomeFeedViewController ()
 - (IBAction)didTapLogout:(id)sender;
@@ -73,7 +74,7 @@ const int SIZE_OF_QUERY = 5;
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             self.likesByCurrentUser = likes;
-            NSLog(@"%@", [NSString stringWithFormat:@"Likes by user %@: %@", [PFUser currentUser].username, self.likesByCurrentUser]);
+            //NSLog(@"%@", [NSString stringWithFormat:@"Likes by user %@: %@", [PFUser currentUser].username, self.likesByCurrentUser]);
         }
     }];
 }
@@ -120,7 +121,18 @@ const int SIZE_OF_QUERY = 5;
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     Post *post = self.arrayOfPosts[indexPath.row];
-    cell.post = post;
+    
+    BOOL postLikedByCurrentUser = FALSE;
+    for (int i = 0; i < self.likesByCurrentUser.count; i++) {
+        Like *currLike = [self.likesByCurrentUser objectAtIndex:i];
+        //NSLog(@"Getting post id from like: %@", currLike[@"postLiked"]);
+        Post *currLikePost = currLike[@"postLiked"];
+        if ([currLikePost.objectId isEqualToString:[NSString stringWithFormat:@"%@", post.objectId]]) {
+            postLikedByCurrentUser = TRUE;
+            break;
+        }
+    }
+    [cell setPost:post withLike:postLikedByCurrentUser];
     return cell;
 }
 

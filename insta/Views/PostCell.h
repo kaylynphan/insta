@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 - (IBAction)didTapLikeButton:(id)sender;
 
-- (void)setPost:(Post *)post;
+- (void)setPost:(Post *)post withLike:(BOOL)like;
 
 @end
 

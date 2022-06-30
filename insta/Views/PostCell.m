@@ -22,7 +22,7 @@
     // Configure the view for the selected state
 }
 
-- (void)setPost:(Post *)post {
+- (void)setPost:(Post *)post withLike:(BOOL)like {
     _post = post;
     self.photoImageView.file = post[@"image"];
     [self.photoImageView loadInBackground];
@@ -30,6 +30,12 @@
     self.captionLabel.text = post[@"caption"];
     self.profileImageView.file = post.author[@"profileImage"];
     [self.profileImageView loadInBackground];
+    
+    if (like) {
+        [self.likeButton setImage:[UIImage imageNamed:@"heart-red"] forState:UIControlStateNormal];
+    } else {
+        [self.likeButton setImage:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
+    }
     
     // get all the people who have liked this post
     /*
