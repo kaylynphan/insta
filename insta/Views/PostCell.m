@@ -26,8 +26,9 @@
     _post = post;
     self.photoImageView.file = post[@"image"];
     [self.photoImageView loadInBackground];
-    self.userLabel.text = post.author.username;
-    self.captionLabel.text = post[@"caption"];
+    self.userLabel.text = [NSString stringWithFormat:@"@%@", post.author.username];
+    self.captionLabel.text = [NSString stringWithFormat:@"@%@: %@", post.author.username, post[@"caption"]];
+    //self.captionLabel.text = post[@"caption"];
     self.profileImageView.file = post.author[@"profileImage"];
     [self.profileImageView loadInBackground];
     self.likedByCurrentUser = like;

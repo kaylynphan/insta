@@ -21,6 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -113,6 +115,11 @@
             }
         }];
     }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    return FALSE;
 }
 
 @end
