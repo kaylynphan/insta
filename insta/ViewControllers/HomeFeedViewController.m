@@ -14,6 +14,7 @@
 #import "DetailsViewController.h"
 #import "ComposeViewController.h"
 #import "InfiniteScrollActivityView.h"
+#import "Like.h"
 
 @interface HomeFeedViewController ()
 - (IBAction)didTapLogout:(id)sender;
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (weak, nonatomic) InfiniteScrollActivityView* loadingMoreView;
+@property (strong, nonatomic) NSMutableArray *likesByCurrentUser; // an array of post ids where each post was liked by the current user
 
 @end
 
@@ -40,7 +42,9 @@ const int SIZE_OF_QUERY = 5;
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
-
+    
+    // set up likesByCurrentUser
+    [self queryLikes];
 
     // set up table
     [self.tableView setDataSource:self];
@@ -59,6 +63,20 @@ const int SIZE_OF_QUERY = 5;
     UIEdgeInsets insets = self.tableView.contentInset;
     insets.bottom += InfiniteScrollActivityView.defaultHeight;
     self.tableView.contentInset = insets;
+}
+
+- (void)queryLikes {
+    PFQuery *query = [PFQuery queryWithClassName:@"Like"];
+    [query includeKey:@"objectId"];
+    [query whereKey:@"likedByUser" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable likes, NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            self.likesByCurrentUser = likes;
+            //NSLog(@"%@", [NSString stringWithFormat:@"Likes by user %@: %@", [PFUser currentUser].username, self.likesByCurrentUser]);
+        }
+    }];
 }
 
 - (void)queryPosts:(PFQuery *)query {
@@ -103,7 +121,18 @@ const int SIZE_OF_QUERY = 5;
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     Post *post = self.arrayOfPosts[indexPath.row];
-    cell.post = post;
+    
+    BOOL postLikedByCurrentUser = FALSE;
+    for (int i = 0; i < self.likesByCurrentUser.count; i++) {
+        Like *currLike = [self.likesByCurrentUser objectAtIndex:i];
+        //NSLog(@"Getting post id from like: %@", currLike[@"postLiked"]);
+        Post *currLikePost = currLike[@"postLiked"];
+        if ([currLikePost.objectId isEqualToString:[NSString stringWithFormat:@"%@", post.objectId]]) {
+            postLikedByCurrentUser = TRUE;
+            break;
+        }
+    }
+    [cell setPost:post withLike:postLikedByCurrentUser];
     return cell;
 }
 
@@ -154,13 +183,15 @@ const int SIZE_OF_QUERY = 5;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"showDetails"]) {
-        UITableViewCell *cell = sender;
+        PostCell *cell = sender;
         NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
         // Get the new view controller using [segue destinationViewController].
         Post *postToPass = self.arrayOfPosts[myIndexPath.row];
+        BOOL likedByCurrentUserToPass = cell.likedByCurrentUser;
         // Pass the selected object to the new view controller.
         DetailsViewController *detailVC = [segue destinationViewController];
         detailVC.post = postToPass;
+        detailVC.likedByCurrentUser = likedByCurrentUserToPass;
     } else if ([[segue identifier] isEqualToString:@"composePost"]) {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;

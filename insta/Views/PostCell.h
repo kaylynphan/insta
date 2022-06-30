@@ -19,8 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
 @property (strong, nonatomic) Post *post;
+@property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+- (IBAction)didTapLikeButton:(id)sender;
+@property (assign, nonatomic) BOOL likedByCurrentUser;
 
-- (void)setPost:(Post *)post;
+- (void)setPost:(Post *)post withLike:(BOOL)like;
 
 @end
 

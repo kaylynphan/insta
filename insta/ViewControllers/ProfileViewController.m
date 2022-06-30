@@ -24,6 +24,9 @@
     self.userLabel.text = self.user.username;
     self.profileImageView.file = self.user[@"profileImage"];
     [self.profileImageView loadInBackground];
+    // crop into circle frame
+    self.profileImageView.layer.cornerRadius = CGRectGetHeight(self.profileImageView.frame) / 2;
+        self.profileImageView.clipsToBounds = YES;
     
     NSLog(@"%@", self.user[@"profileImage"]);
 }
@@ -65,7 +68,7 @@
     PFUser *user = [PFUser currentUser];
     user[@"profileImage"] = [ProfileViewController getPFFileFromImage:self.profileImageView.image];
     [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
+        //
     }];
 }
 
