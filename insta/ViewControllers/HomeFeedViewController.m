@@ -183,13 +183,15 @@ const int SIZE_OF_QUERY = 5;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"showDetails"]) {
-        UITableViewCell *cell = sender;
+        PostCell *cell = sender;
         NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
         // Get the new view controller using [segue destinationViewController].
         Post *postToPass = self.arrayOfPosts[myIndexPath.row];
+        BOOL likedByCurrentUserToPass = cell.likedByCurrentUser;
         // Pass the selected object to the new view controller.
         DetailsViewController *detailVC = [segue destinationViewController];
         detailVC.post = postToPass;
+        detailVC.likedByCurrentUser = likedByCurrentUserToPass;
     } else if ([[segue identifier] isEqualToString:@"composePost"]) {
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;

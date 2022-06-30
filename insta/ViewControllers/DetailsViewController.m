@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+- (IBAction)didTapLikeButton:(id)sender;
 
 @end
 
@@ -54,9 +56,15 @@
     } else {
         self.timestampLabel.text = [NSString stringWithFormat:@"%@ ago", dateSince];
     }
-    
     self.likesLabel.text = [NSString stringWithFormat:@"%@ likes", post[@"likeCount"]];
     self.commentsLabel.text = [NSString stringWithFormat:@"%@ comments", post[@"commentCount"]];
+    
+    if (self.likedByCurrentUser) {
+        [self.likeButton setImage:[UIImage imageNamed:@"heart-red"] forState:UIControlStateNormal];
+    } else {
+        [self.likeButton setImage:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
+    }
+    
 }
 
 /*
@@ -69,4 +77,6 @@
 }
 */
 
+- (IBAction)didTapLikeButton:(id)sender {
+}
 @end

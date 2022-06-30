@@ -302,6 +302,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4Z-kt-gq8">
+                                <rect key="frame" x="20" y="729" width="78" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="hzS-WH-yXS"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart" title=" "/>
+                                <connections>
+                                    <action selector="didTapLikeButton:" destination="2wo-iI-jZU" eventType="touchUpInside" id="gGJ-v7-j6W"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TgH-Dk-8JA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -309,6 +320,7 @@
                             <constraint firstItem="TgH-Dk-8JA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yKZ-FL-8RN" secondAttribute="trailing" constant="30" id="010-yI-bDP"/>
                             <constraint firstItem="yKZ-FL-8RN" firstAttribute="leading" secondItem="TgH-Dk-8JA" secondAttribute="leading" constant="20" id="107-rp-ef9"/>
                             <constraint firstItem="dz4-B0-j2J" firstAttribute="leading" secondItem="TgH-Dk-8JA" secondAttribute="leading" id="2R6-Df-sLp"/>
+                            <constraint firstItem="r4Z-kt-gq8" firstAttribute="top" secondItem="CkT-gl-DPm" secondAttribute="bottom" constant="7.5" id="3du-YM-kJo"/>
                             <constraint firstItem="NRu-kS-XI3" firstAttribute="top" secondItem="fVC-Ca-QYS" secondAttribute="bottom" constant="8" symbolic="YES" id="61K-1n-dQP"/>
                             <constraint firstItem="fVC-Ca-QYS" firstAttribute="leading" secondItem="yKZ-FL-8RN" secondAttribute="leading" id="6QZ-NR-AH8"/>
                             <constraint firstItem="NRu-kS-XI3" firstAttribute="leading" secondItem="yKZ-FL-8RN" secondAttribute="leading" id="7yx-Jb-VvS"/>
@@ -323,6 +335,8 @@
                             <constraint firstItem="TgH-Dk-8JA" firstAttribute="trailing" secondItem="NRu-kS-XI3" secondAttribute="trailing" constant="93" id="fi9-IQ-KqF"/>
                             <constraint firstItem="TgH-Dk-8JA" firstAttribute="trailing" secondItem="Geu-U5-utB" secondAttribute="trailing" constant="115" id="iJc-z2-6eK"/>
                             <constraint firstItem="fVC-Ca-QYS" firstAttribute="top" secondItem="dz4-B0-j2J" secondAttribute="bottom" constant="8" id="jIX-5o-l31"/>
+                            <constraint firstItem="r4Z-kt-gq8" firstAttribute="leading" secondItem="CkT-gl-DPm" secondAttribute="leading" id="nAt-IG-nBi"/>
+                            <constraint firstItem="TgH-Dk-8JA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="r4Z-kt-gq8" secondAttribute="trailing" symbolic="YES" id="sA6-2C-6Ph"/>
                             <constraint firstItem="CkT-gl-DPm" firstAttribute="leading" secondItem="yKZ-FL-8RN" secondAttribute="leading" id="xUf-OD-Zoi"/>
                         </constraints>
                     </view>
@@ -330,6 +344,7 @@
                     <connections>
                         <outlet property="captionLabel" destination="fVC-Ca-QYS" id="pNj-ZD-X0E"/>
                         <outlet property="commentsLabel" destination="Geu-U5-utB" id="qy4-r5-tzd"/>
+                        <outlet property="likeButton" destination="r4Z-kt-gq8" id="QKD-KW-g0O"/>
                         <outlet property="likesLabel" destination="NRu-kS-XI3" id="ZJ9-uI-N1n"/>
                         <outlet property="photoImageView" destination="dz4-B0-j2J" id="Z0S-5d-Zww"/>
                         <outlet property="timestampLabel" destination="CkT-gl-DPm" id="vem-8D-1R5"/>

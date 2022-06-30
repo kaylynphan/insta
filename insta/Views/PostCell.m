@@ -30,6 +30,7 @@
     self.captionLabel.text = post[@"caption"];
     self.profileImageView.file = post.author[@"profileImage"];
     [self.profileImageView loadInBackground];
+    self.likedByCurrentUser = like;
     
     if (like) {
         [self.likeButton setImage:[UIImage imageNamed:@"heart-red"] forState:UIControlStateNormal];
