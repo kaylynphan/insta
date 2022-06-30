@@ -48,14 +48,15 @@ Here's a walkthrough of implemented user stories:
 
 <a href="https://i.imgur.com/55tK1dp.gif">GIF 1</a>
 <br />
-<a href="https://i.imgur.com/BlCNCXu.gif">GIF 2</a>
+<a href="https://i.imgur.com/BHGgOPx.gif">GIF 2</a>
 <br />
-<a href="https://i.imgur.com/felXd7j.gif">GIF 3</a>
+<a href="https://i.imgur.com/0KM15WN.gif">GIF 3</a>
 <br />
-<a href="https://i.imgur.com/0KM15WN.gif">GIF 4</a>
+<a href="https://i.imgur.com/BlCNCXu.gif">GIF 4</a>
 <br />
-<a href="https://i.imgur.com/BHGgOPx.gif">GIF 5</a>
+<a href="https://i.imgur.com/felXd7j.gif">GIF 5</a>
 <br />
+
 
 
 
